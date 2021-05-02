@@ -1,6 +1,9 @@
-# ミュータブル
+import calendar
+import datetime
 import math
+import unicodedata
 
+# ミュータブル
 data1 = [1, 2, 3]
 data2 = data1
 data1[0] = 100
@@ -208,8 +211,65 @@ print(sum_num)
 
 # 例外処理
 num = 0
-try:
-    num = input('数字を入力してください')
-    print('2倍すると', int(num)*2)
-except (ValueError, TypeError) as ex:
-    print(f'error {ex}')
+# try:
+#     num = input('数字を入力してください')
+#     print('2倍すると', int(num)*2)
+# except (ValueError, TypeError) as ex:
+#     print(f'error {ex}')
+
+# 文字列の操作
+title = 'sampleproject'
+print(len(title))
+
+# Hello+sampleproject+さん+
+print('Hello', title, 'さん', sep='+', end='+')
+
+# 以下2つは同じ、文字列によってstr型クラスのインスタンス（オブジェクト）を生成し、変数msgに代入する
+msg = 'sample'
+msg = str('sample')
+
+print(msg.upper())
+print()
+current = datetime.date.today()
+print(current)
+
+# 部分文字列の取得
+# txt[start:end:step]
+# start:開始位置、end:終了位置, step:増減
+
+ch = 'あいうえおかきくけこ'
+print(ch[2:5])
+print(ch[::-1])
+print(ch[0:1:1])
+
+# 文字を数字に変更する
+print(unicodedata.digit('5'))
+print(unicodedata.numeric('参'))
+print(unicodedata.numeric('Ⅵ'))
+
+# findメソッド（銭湯位置からの該当する文字列の位置を返却する）
+del msg
+msg = "三菱UFJ銀行UFJ三菱"
+print(msg.find('UFJ'))
+print(msg.rfind('UFJ'))
+
+print(msg.index('UFJ'))
+# indexメソッドで該当する文字列が存在しない場合、ValueErrorを返す
+# print(msg.rindex('UFK'))
+
+# 文字列の前後から空白を除去する
+del msg
+msg = '--------![今日もチョコレートを食べる]----!!'
+print('「' + msg.strip('!-[]') + '」')
+
+# msgにチョコレートが存在するか判定する
+print('チョコレート' in msg)
+
+msg = 'a b c d'
+msg1 = 'a|b|c|d'
+
+print(msg.split())
+print(msg1.split('|'))
+
+# カレンダーを生成
+print(calendar.month(2021, 6, 5))
